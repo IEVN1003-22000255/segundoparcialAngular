@@ -1,0 +1,41 @@
+
+
+<div>
+  <h2>Datos Personales</h2>
+
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="nombre"> <br><br>
+
+  <label>Apaterno:</label>
+  <input type="text" [(ngModel)]="paterno"> <br><br>
+
+  <label>Amaterno:</label>
+  <input type="text" [(ngModel)]="materno"> <br><br>
+
+  <label>Día:</label>
+  <input type="number" [(ngModel)]="dia">
+
+  <label>Mes:</label>
+  <input type="number" [(ngModel)]="mes">
+
+  <label>Año:</label>
+  <input type="number" [(ngModel)]="anio"> <br><br>
+
+  <label>Sexo:</label>
+  <input type="radio" name="sexo" value="Masculino" [(ngModel)]="sexo"> Masculino
+  <input type="radio" name="sexo" value="Femenino" [(ngModel)]="sexo"> Femenino <br><br>
+</div>
+
+<button (click)="imprimir()">Imprimir</button>
+
+<br><br>
+
+<h3>Resultado</h3>
+<p>Hola {{resultadoNombre}} {{resultadoPaterno}} {{resultadoMaterno}}</p>
+
+@if (edad > 0) {
+  <p>Sexo: {{resultadoSexo}}</p>
+  <p>Tienes: {{edad}} años</p>
+  <p>Tu Signo zodiacal chino es: {{signoChino}}</p>
+  <img [src]="imagen" width="150">
+}

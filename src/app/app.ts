@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import {Zodiaco} from './Formulario/zodiaco/zodiaco';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,Zodiaco,FormsModule],
+  standalone:true,
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
