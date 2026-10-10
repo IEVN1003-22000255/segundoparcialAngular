@@ -1,1 +1,153 @@
-<p>cinepolis works!</p>
+
+<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-dark bg-blend-multiply">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+  <div class="max-w-4xl mx-auto p-6 bg-white/90 backdrop-blur-md rounded-lg shadow-xl border border-gray-200">
+    
+    
+    <h1 class="text-3xl font-extrabold text-center text-blue-900 mb-8 border-b-2 border-blue-900 pb-2 inline-block mx-auto w-full">
+      Cinépolis
+    </h1>
+
+    <form [formGroup]="formulario" (ngSubmit)="procesar()">
+      
+    
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+       
+        <fieldset class="border border-gray-400 rounded-lg p-5 bg-white/50 shadow-sm">
+          <legend class="text-lg font-bold text-blue-900 px-2 italic">entradas</legend>
+
+
+          
+          <div class="flex items-center justify-between mb-4 gap-2">
+            <label for="nombre" class="text-sm font-semibold text-gray-800 w-1/2">
+              Nombre
+            </label>
+            <input 
+              type="text" 
+              formControlName="nombre" 
+              id="nombre" 
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2" 
+              required 
+            />
+          </div>
+
+      
+          <div class="flex items-center justify-between mb-4 gap-2">
+            <label for="compradores" class="text-sm font-semibold text-gray-800 w-1/2">
+              Cantidad Compradores
+            </label>
+            <input 
+              type="number" 
+              formControlName="compradores" 
+              id="compradores" 
+              min="1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2" 
+              required 
+            />
+          </div>
+
+          <div class="flex items-center justify-between mb-4 gap-2">
+            <span class="text-sm font-semibold text-gray-800 w-1/2">Tarjeta Cineco</span>
+            <div class="flex items-center justify-start gap-4 w-1/2">
+              <div class="flex items-center">
+                <input 
+                  id="cineco-si" 
+                  type="radio" 
+                  value="si" 
+                  formControlName="cineco" 
+                  class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" 
+                />
+                <label for="cineco-si" class="ms-1 text-sm font-medium text-gray-900">Sí</label>
+              </div>
+              <div class="flex items-center">
+                <input 
+                  id="cineco-no" 
+                  type="radio" 
+                  value="no" 
+                  formControlName="cineco" 
+                  class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" 
+                />
+                <label for="cineco-no" class="ms-1 text-sm font-medium text-gray-900">No</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-2 gap-2">
+            <label for="boletas" class="text-sm font-semibold text-gray-800 w-1/2">
+              Cantidad De Boletas
+            </label>
+            <input 
+              type="number" 
+              formControlName="boletas" 
+              id="boletas" 
+              min="1"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2" 
+              required 
+            />
+          </div>
+
+        </fieldset>
+
+        <fieldset class="border border-gray-400 rounded-lg p-5 bg-white/50 shadow-sm h-full flex flex-col justify-center">
+          <legend class="text-lg font-bold text-blue-900 px-2 italic">Salidas</legend>
+
+          <div class="flex items-center justify-between gap-2 py-4">
+            <label class="text-sm font-bold text-gray-800 w-1/2">Valor a Pagar</label>
+            <div class="w-1/2 bg-gray-100 border border-gray-300 text-gray-900 font-extrabold text-lg rounded-lg p-2 text-center shadow-inner">
+              ${{ valorPagar | number:'1.0-2' }}
+            </div>
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      @if (mensajeError) {
+        <div class="mt-6 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm text-center font-medium">
+          {{ mensajeError }}
+        </div>
+      }
+
+      <div class="mt-8 flex justify-center">
+        <fieldset class="border border-gray-400 rounded-lg px-8 py-4 bg-white/50 shadow-sm text-center">
+          <legend class="text-lg font-bold text-blue-900 px-2 italic">Acciones</legend>
+
+          <div class="flex justify-center gap-6">
+            <button 
+              type="submit" 
+              class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-6 py-2 shadow-sm">
+              Procesar
+            </button>
+
+            <button 
+              type="button" 
+              (click)="limpiar()" 
+              class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-semibold rounded-lg text-sm px-6 py-2 shadow-sm">
+              Salir
+            </button>
+          </div>
+        </fieldset>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="max-w-4xl mx-auto mt-6 bg-white/90 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg p-5">
+      <fieldset class="border border-gray-300 rounded-lg p-5 bg-white/50 shadow-sm h-full flex flex-col justify-center">
+     <legend class="text-lg font-bold text-blue-900 px-2 italic">Resumen de la compra</legend>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-800">
+      <p><span class="font-semibold text-blue-900">Nombre:</span> {{ cliente.nombre }}</p>
+      <p><span class="font-semibold text-blue-900">Compradores:</span> {{ cliente.compradores }}</p>
+      <p><span class="font-semibold text-blue-900">Tarjeta Cineco:</span> {{ cliente.cineco ? 'Sí' : 'No' }}</p>
+      <p><span class="font-semibold text-blue-900">Boletas:</span> {{ cliente.boletas }}</p>
+      
+    </div>
+     </fieldset>
+   
+   
+  </div>
+</div>
+</section>
